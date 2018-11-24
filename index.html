@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Контейнеризация</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="shower/themes/ribbon/styles/styles.css">
+    <style>
+        .shower {
+            --slide-ratio: calc(16 / 9);
+        }
+    </style>
+</head>
+<body class="shower list">
+
+    <header class="caption">
+        <h1>Контейнеризация</h1>
+        <p>Powered by <a href="https://github.com/shower/shower">Shower</a></p>
+    </header>
+
+    <section class="slide" id="cover">
+        <h2>Контейнеризация</h2>
+        <p>Доклад Дмитрия Захарова</p>
+        <img src="pictures/main-cover.png" class="place bottom right main-cover" alt="Docker logo half">
+        <style>
+            #cover h2 {
+                margin: 30px 0 0;
+                font-size: 70px;
+            }
+
+            #cover p {
+                margin: 10px 0 0;
+                font-style: italic;
+                font-size: 20px;
+            }
+
+            .main-cover {
+                width: 400px;
+                margin: 0 100px 100px 0;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>История контейнеров</h2>
+        <ul>
+            <li>1979 chroot (Unix)</li>
+            <li>1998 jail (FreeBSD)</li>
+            <li>2001 Solaris Zones (Solaris); Virtuozzo (Linux)</li>
+            <li>2008 LXC (Linux)</li>
+            <li>2014 Docker</li>
+            <li>2015 Open Container Initiative</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Виртуальные машины vs. Контейнеры</h2>
+        <div class="columns two">
+            <img src="pictures/container-vm-whatcontainer_2.png" alt="Virtual machines">
+            <img src="pictures/docker-containerized-appliction-blue-border_2.png" alt="Containers">
+        </div>
+        <style>
+            img {
+                width: auto;
+                height: auto;
+                max-width: 100%;
+                max-height: 100%;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Преимущества контейнеров</h2>
+        <ul>
+            <li>Гибкость</li>
+            <li>Легковесность</li>
+            <li>Заменимость</li>
+            <li>Переносимость</li>
+            <li>Масштабируемость</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Docker</h2>
+        <img src="pictures/docker.png" class="place bottom right mid-cover" alt="Docker logo">
+        <style>
+            .mid-cover {
+                width: 600px;
+                margin: 0 100px 100px 0;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Архитектура Docker</h2>
+        <div class="columns">
+            <img src="pictures/architecture.svg" alt="Docker architecture">
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Базовые технологии</h2>
+        <ul>
+            <li>Namespaces</li>
+            <li>Cgroups</li>
+            <li>Union file systems</li>
+            <li>Container format</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Образы контейнеров</h2>
+        <img src="pictures/docker.png" class="place bottom right mid-cover" alt="Docker logo">
+    </section>
+
+    <section class="slide">
+        <h2>Dockerfile</h2>
+        <pre>
+            <code><span class="keyword">FROM</span> python:3.7-alpine</code>
+            <code><span class="keyword">WORKDIR</span> /app</code>
+            <code><span class="keyword">COPY</span> . /app</code>
+            <code><span class="keyword">RUN</span> pip install -r requirements.txt</code>
+            <code><span class="keyword">EXPOSE</span> 80</code>
+            <code><span class="keyword">ENV</span> NAME World</code>
+            <code><span class="keyword">CMD</span> ["python", "app.py"]</code>
+        </pre>
+        <style>
+            .keyword {
+                color: blueviolet;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Docker контейнер</h2>
+        <img src="pictures/docker.png" class="place bottom right mid-cover" alt="Docker logo">
+    </section>
+
+    <section class="slide">
+        <h2>Сеть</h2>
+        <ul>
+            <li>Bridge</li>
+            <li>Host</li>
+            <li>None</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Хранение и управление данными</h2>
+        <ul>
+            <li>В контейнере</li>
+            <li>Привязка монтирования (mount)</li>
+            <li>Тома (volumes)</li>
+            <li>tmpfs</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Тома (volumes)</h2>
+        <ul>
+            <li>Резервирование и преносимость</li>
+            <li>Управление через CLI или Docker API</li>
+            <li>Работа с Linux и Windows контейнерами</li>
+            <li>Распределение между несколькими контейнерами</li>
+            <li>Хранение на удаленных узлах или в облаке, шифрование и другие функции</li>
+            <li>Предварительное заполнение контейнером</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Угрозы безопасности</h2>
+        <ul>
+            <li>Уязвимости в ядре хоста</li>
+            <li>DDoS через монополизацию ресурсов</li>
+            <li>Взлом контейнера, повышение привилегий</li>
+            <li>Использование зараженных образов</li>
+            <li>Утечка секретов</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Docker compose</h2>
+        <img src="pictures/docker.png" class="place bottom right mid-cover" alt="Docker logo">
+    </section>
+
+    <section class="slide">
+        <h2>docker-compose.yml</h2>
+        <pre>
+            <code>version: '3'</code>
+            <code>services:</code>
+            <code>    web:</code>
+            <code>        build: .</code>
+            <code>        ports:</code>    
+            <code>            - "5000:5000"</code>
+            <code>    redis:</code>
+            <code>        image: "redis:alpine"</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Преимущества docker compose</h2>
+        <ul>
+            <li>Множество изолированных сред на одном хосте</li>
+            <li>Сохранение томов при перезапуске контейнеров</li>
+            <li>Пересоздание только измененных контейнеров</li>
+            <li>Поддержка переменных сред</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Docker registry</h2>
+        <img src="pictures/docker.png" class="place bottom right mid-cover" alt="Docker logo">
+    </section>
+
+    <section class="slide">
+        <h2>dockerimg.evelopers.com</h2>
+        <img src="pictures/agent2.gif" alt="Agent Smith">
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Вопросы?</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Спасибо!</h2>
+    </section>
+
+    <footer class="badge">
+        <a href="https://github.com/shower/shower">GitHub</a>
+    </footer>
+
+    <div class="progress"></div>
+
+    <script src="shower/shower.min.js"></script>
+    <!-- Copyright © 2018 Yours Truly, Famous Inc. -->
+
+</body>
+</html>
